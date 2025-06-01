@@ -18,7 +18,8 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.6.1",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
