@@ -55,7 +55,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-30 py-20">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-5 md:px-30 py-20">
       <div className="output_window w-full mb-10">
         {isChatStart ? (
           <div className="chat_window">
