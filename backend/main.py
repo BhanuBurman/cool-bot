@@ -2,12 +2,9 @@ from typing import List
 
 import uvicorn
 import shutil
-import time
 import os
-from fastapi import Request, Depends
-from fastapi.responses import JSONResponse
+from fastapi import Depends
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -16,19 +13,11 @@ from starlette.middleware.cors import CORSMiddleware
 import crud
 import models
 import schemas
-from database import engine, Base, SessionLocal
-from models import FileInfo
+from database import engine, SessionLocal
 from new_llm import create_retriever, create_doc_qa_chain, chat_func, create_general_chain
 
 
 app = FastAPI()
-
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:5173",
-]
 
 app.add_middleware(
     CORSMiddleware,

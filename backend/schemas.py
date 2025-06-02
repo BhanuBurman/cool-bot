@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+# All schemas
 class FileInfoCreate(BaseModel):
     file_name: str
 

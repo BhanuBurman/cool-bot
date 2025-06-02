@@ -1,0 +1,96 @@
+# Byte-compiled / optimized / DLL files
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+
+# Virtual environment
+backend/venv/
+backend/.env
+backend/.venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
+
+# FastAPI logs
+backend/*.log
+
+# VSCode settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# PyCharm project files
+.idea/
+
+# Uploaded documents
+backend/documents/
+
+# Database files
+backend/*.sqlite3
+backend/*.db
+
+# Python egg and build artifacts
+backend/*.egg-info/
+backend/dist/
+backend/build/
+backend/eggs/
+backend/.eggs/
+
+# Coverage and test cache
+backend/htmlcov/
+backend/.tox/
+backend/.nox/
+backend/.coverage
+backend/coverage.xml
+backend/.cache
+backend/nosetests.xml
+backend/pytest_cache/
+backend/.pytest_cache/
+backend/.testmondata
+
+# MyPy cache
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+
+# Pydantic schema cache
+backend/__pydantic__/
+
+# Temp files and logs
+backend/*.bak
+backend/*.tmp
+
+# Jupyter notebook checkpoints
+backend/.ipynb_checkpoints/
+
+# Compiled protobufs
+backend/*.pb.cc
+backend/*.pb.h
+backend/*.pb.go
+backend/*.pb.py
+
+# dotenv configs
+backend/.env.local
+backend/.env.*
+
+# Docker-related
+backend/*.pid
+backend/*.seed
+backend/*.pid.lock
+backend/docker-compose.override.yml
+
+# Frontend assets (in case it's a fullstack monorepo)
+node_modules/
+dist/
+build/
+
+# Chroma vector DB or cache
+backend/chroma/
+
+# Runtime temp or output files
+backend/output/
+backend/temp/
+backend/.cache/
+
+backend/documents

@@ -1,11 +1,16 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from dotenv import load_dotenv
 
-POSTGRES_USER = "postgres"
-POSTGRES_PASSWORD = "pass123"
-POSTGRES_HOST = "localhost"
-POSTGRES_PORT = "5432"
-POSTGRES_DB = "postgres"
+load_dotenv()
+
+POSTGRES_USER = os.getenv("USER")
+POSTGRES_PASSWORD = os.getenv("PASSWORD")
+POSTGRES_HOST = os.getenv("HOST")
+POSTGRES_PORT = os.getenv("PORT")
+POSTGRES_DB = os.getenv("DB")
 
 # PostgreSQL URL
 postgres_url = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"

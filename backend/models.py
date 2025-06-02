@@ -1,7 +1,8 @@
 from sqlalchemy import Column, Integer, String, DateTime
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from database import Base
 
+# Models
 class FileInfo(Base):
     __tablename__ = "uploaded_file_info"
     __table_args__ = {'schema': 'cool_bot_data'}

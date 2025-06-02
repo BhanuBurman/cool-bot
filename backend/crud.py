@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from models import FileInfo
 from schemas import FileInfoCreate
 
+# All types of db operations
 def create_file_info(db: Session, file_info: FileInfoCreate):
     db_file = FileInfo(file_name=file_info.file_name)
     db.add(db_file)
