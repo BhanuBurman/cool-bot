@@ -41,6 +41,9 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     query: str
 
+class FileNameRequest(BaseModel):
+    file_name: str
+
 UPLOAD_DIR="documents"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
@@ -81,12 +84,12 @@ def upload_file(file: UploadFile = File(...)):
     return {"status":f"Uploaded successfully", "fileName":file.filename}
 
 @app.post("/embed_file")
-def embed_file(file_name: str):
+def embed_file(req: FileNameRequest):
     global retriever, doc_chain, DOCUMENT_PATH
     if str is None:
         return {"error": "No document path provided"}
 
-    DOCUMENT_PATH = os.path.join(UPLOAD_DIR, file_name)
+    DOCUMENT_PATH = os.path.join(UPLOAD_DIR, req.file_name)
 
     print("Document Uploaded...")
     retriever = create_retriever(DOCUMENT_PATH)
@@ -94,36 +97,6 @@ def embed_file(file_name: str):
     doc_chain = create_doc_qa_chain(retriever)
     print("Document Chain Created...")
     return {"status":"Document embedded successfully"}
-
-
-# @app.get("/process")
-# async def process_file():
-#     global DOCUMENT_PATH
-#     if DOCUMENT_PATH is None:
-#         return JSONResponse({"error": "No document uploaded yet."}, status_code=400)
-#
-#     async def event_generator():
-#         global retriever, doc_chain, DOCUMENT_PATH
-#
-#         yield "event: status\ndata: Starting embedding...\n\n"
-#         await asyncio.sleep(0.5)
-#
-#         retriever = create_retriever(DOCUMENT_PATH)
-#         yield "event: status\ndata: Retriever created. Creating QA chain...\n\n"
-#
-#         doc_chain = create_doc_qa_chain(retriever)
-#         yield "event: status\ndata: QA chain ready. You can start chatting!\n\n"
-#
-#     return EventSourceResponse(
-#         event_generator(),
-#         headers={
-#             "Access-Control-Allow-Origin": "http://localhost:5173",
-#             "Cache-Control": "no-cache",
-#             "X-Accel-Buffering": "no",
-#         }
-#     )
-
-
 
 chat_history = []
 @app.post("/generate")

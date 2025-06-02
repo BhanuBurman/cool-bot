@@ -12,7 +12,6 @@ const Navbar = () => {
 
   useEffect(() => {
     fetchAllFiles();
-    // handleFileEmbedding();
   }, []);
 
   const fetchAllFiles = async () => {
@@ -153,6 +152,7 @@ const Navbar = () => {
                       onClick={() => {
                         setFileName(file.file_name);
                         handleFileEmbedding(file.file_name);
+                        setDropdownOpen(false);
                       }}
                       className="text-gray-700 hover:text-gray-900 cursor-pointer border-b-2 border-gray-300 p-2"
                     >

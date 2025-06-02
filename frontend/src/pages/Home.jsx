@@ -12,6 +12,9 @@ const Home = () => {
   const [isChatStart, setIsChatStart] = useState(false);
 
   const handleSubmit = async () => {
+    if (!query.trim()) {
+      return; // Prevent submission of empty queries
+    }
     setIsChatStart(true);
     try {
       const response = await fetch("http://localhost:8000/generate", {
@@ -91,7 +94,7 @@ const Home = () => {
             e.target.style.height = e.target.scrollHeight + "px"; // Adjust to scroll height
           }}
         />
-        <IoArrowForwardCircleSharp size={44} onClick={handleSubmit} />
+        <IoArrowForwardCircleSharp size={44} onClick={handleSubmit} className="transition-all hover:scale-120 hover:text-green-600 cursor-pointer" />
       </div>
     </div>
   );
