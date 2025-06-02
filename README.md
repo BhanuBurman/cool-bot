@@ -2,6 +2,7 @@
 
 MyChatBot is an AI-powered chatbot platform that allows users to interact with an LLM (Large Language Model) for both general conversation and document-based question answering. Users can upload PDF files, embed them for retrieval-augmented QA, and chat with the bot about both general and document-specific topics.
 
+![Front Page DEMO](./front-page-demo.jpg)
 ---
 
 ## Features
