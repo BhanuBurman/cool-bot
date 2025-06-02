@@ -3,6 +3,8 @@ import { CiCirclePlus } from "react-icons/ci";
 import { GrDocument } from "react-icons/gr";
 import LoadingUpload from "./LoadingUpload";
 import { useEffect, useState } from "react";
+import { RiArrowDropDownLine } from "react-icons/ri";
+
 const Navbar = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [fileName, setFileName] = useState("No file");
@@ -132,19 +134,20 @@ const Navbar = () => {
           <img src={Logo} className="h-14" />
         </li>
         <div className="flex items-center">
-          <div className="flex justify-center ">
+          <div className="flex justify-center items-center">
             <div
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="mx-5 flex items-center gap-2 w-50 p-1 px-5 rounded-md hover:bg-gray-100 font-semibold"
+              className="mx-5 flex items-center gap-2 w-50 p-1 px-5 rounded-md hover:bg-gray-100 font-semibold cursor-pointer"
             >
               <GrDocument className="text-2xl h-7 text-green-500 border-1 p-1 rounded-sm border-green-400" />
               <span className="text-green-500">
                 {fileName.substring(0, 13) +
                   (fileName.length > 13 ? "..." : "")}
               </span>
+              <RiArrowDropDownLine className="text-3xl text-green-600"/>
             </div>
             {dropdownOpen && (
-              <div className="drop_down absolute flex flex-col rounded-bl-md rounded-br-md shadow-md  bg-gray-100 py-2  top-12 z-10">
+              <div className="drop_down absolute w-50 flex flex-col rounded-bl-md rounded-br-md shadow-md  bg-gray-100 py-2  top-12 z-10">
                 {fileList.length > 0 &&
                   fileList.map((file, index) => (
                     <span
@@ -165,7 +168,7 @@ const Navbar = () => {
           </div>
           <label
             type="file"
-            className="border-2 p-1 px-5 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-all duration-300 cursor-pointer font-semibold"
+            className="border-2 p-1 px-5 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-all duration-300 cursor-pointer font-semibold hover:-mt-1"
           >
             <input
               type="file"

@@ -15,7 +15,12 @@ const Home = () => {
     if (!query.trim()) {
       return; // Prevent submission of empty queries
     }
+    setLoading(true);
     setIsChatStart(true);
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
     try {
       const response = await fetch("http://localhost:8000/generate", {
         method: "POST",
@@ -38,6 +43,14 @@ const Home = () => {
       setQuery("");
     } catch (error) {
       console.error("Error fetching data:", error);
+      alert("An error occurred while fetching the response. Please try again.");
+    } finally{
+      setLoading(false);
+      setInfo("Response received");
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -47,7 +60,12 @@ const Home = () => {
         {isChatStart ? (
           <div className="chat_window">
             {responseList.map((message, index) => (
-              <div className={`flex flex-row items-center my-2 ${message.role === "user"? "justify-end":"justify-start"}`} key={index}>
+              <div
+                className={`flex flex-row items-center my-2 ${
+                  message.role === "user" ? "justify-end" : "justify-start"
+                }`}
+                key={index}
+              >
                 {message.role === "user" ? (
                   <span className="user_profile w-15 h-15 rounded-full bg-violet-800 text-white font-bold flex items-center justify-center mr-2 text-3xl">
                     B
@@ -71,6 +89,11 @@ const Home = () => {
                 </div>
               </div>
             ))}
+            {loading && (
+              <div className="flex justify-center items-center my-2">
+                <span className="loader">Generating...</span>
+              </div>
+            )}
           </div>
         ) : (
           <div className="default_content w-full flex justify-center">
@@ -94,7 +117,11 @@ const Home = () => {
             e.target.style.height = e.target.scrollHeight + "px"; // Adjust to scroll height
           }}
         />
-        <IoArrowForwardCircleSharp size={44} onClick={handleSubmit} className="transition-all hover:scale-120 hover:text-green-600 cursor-pointer" />
+        <IoArrowForwardCircleSharp
+          size={44}
+          onClick={handleSubmit}
+          className="transition-all hover:scale-120 hover:text-green-600 cursor-pointer"
+        />
       </div>
     </div>
   );
